@@ -1,0 +1,9 @@
+.NavigationMenuLink {
+
+}
+.nav-bar-menu{
+}
+.NavigationMenuList {
+    display: flex;
+list-style: none;
+}
