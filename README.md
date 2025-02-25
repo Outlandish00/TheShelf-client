@@ -1,8 +1,22 @@
-# React + Vite
+# The Shelf Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Running The Shelf
+- Clone this repo by clicking ```code``` in the top right of the repo page, copying the ssh link, and running ```git clone {SSH link}```
+- Navigate into the cloned repository
+- In the base of the repository, run ```npm install```
+- Then run ```npm run dev``` and navigate to the ```http://localhost:{port number}``` link in your browser
 
-Currently, two official plugins are available:
+## Chapters
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What does The Shelf do?
+
+## The Shelf Features
+
+## Planning
+
+## Dependencies
+
+## Tech Used
+
+
+
