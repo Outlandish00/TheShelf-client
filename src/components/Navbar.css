@@ -1,9 +1,27 @@
-.NavigationMenuLink {
-
+.NavigationMenuItem{
+    display: flex;
+    align-items: center;
 }
+
+
 .nav-bar-menu{
+    display: flex;
+    background-color: #1c3041;
+    min-width: 1000px;
+    justify-content: space-evenly;
 }
 .NavigationMenuList {
+    width: 100vw;
     display: flex;
-list-style: none;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+
+}
+
+.NavigationMenuLink{
+    display: flex;
+    align-items: center;
+    color: #7371fc; 
+    text-decoration: none;
 }

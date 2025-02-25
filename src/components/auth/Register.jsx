@@ -2,6 +2,7 @@ import { useState } from "react";
 import { register } from "../../managers/authManager";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "radix-ui";
+import "./Register.css";
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
@@ -42,99 +43,128 @@ export default function Register({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Sign Up</h3>
-      <Form.Root onSubmit={handleSubmit}>
-        <Form.Field name="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control asChild>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field name="firstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control asChild>
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
-            />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field name="lastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control asChild>
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => {
-                setLastName(e.target.value);
-              }}
-            />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field name="userName">
-          <Form.Label>User Name</Form.Label>
-          <Form.Control asChild>
-            <input
-              type="text"
-              value={userName}
-              onChange={(e) => {
-                setUserName(e.target.value);
-              }}
-            />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field>
-          <Form.Label>Password</Form.Label>
-          <Form.Control asChild>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPasswordMismatch(false);
-                setPassword(e.target.value);
-              }}
-            />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field>
-          <Form.Label>Confirm Password</Form.Label>
+    <div className="register-container">
+      <div className="register-form">
+        <div className="register-title">
+          <h1>The Shelf</h1>
+          <h3>Sign Up</h3>
+        </div>
+        <Form.Root onSubmit={handleSubmit} className="register-form-form">
+          <Form.Field name="email">
+            <div className="register-email-group">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control asChild>
+                <input
+                  className="register-input"
+                  type="text"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </Form.Control>
+            </div>
+          </Form.Field>
+          <Form.Field name="firstName">
+            <div className="register-firstname-group">
+              <Form.Label>First Name:</Form.Label>
+              <Form.Control asChild>
+                <input
+                  className="register-input"
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                />
+              </Form.Control>
+            </div>
+          </Form.Field>
+          <Form.Field name="lastName">
+            <div className="register-lastname-group">
+              <Form.Label>Last Name:</Form.Label>
+              <Form.Control asChild>
+                <input
+                  className="register-input"
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
+                />
+              </Form.Control>
+            </div>
+          </Form.Field>
+          <Form.Field name="userName">
+            <div className="register-username-group">
+              <Form.Label>User Name:</Form.Label>
+              <Form.Control asChild>
+                <input
+                  className="register-input"
+                  type="text"
+                  value={userName}
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                  }}
+                />
+              </Form.Control>
+            </div>
+          </Form.Field>
+          <Form.Field>
+            <div className="register-password-group">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control asChild>
+                <input
+                  className="register-input"
+                  type="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPasswordMismatch(false);
+                    setPassword(e.target.value);
+                  }}
+                />
+              </Form.Control>
+            </div>
+          </Form.Field>
+          <Form.Field>
+            <div className="register-confirm-group">
+              <Form.Label>Confirm:</Form.Label>
 
-          <Form.Control asChild>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => {
-                setPasswordMismatch(false);
-                setConfirmPassword(e.target.value);
-              }}
-            />
-          </Form.Control>
-          {passwordMismatch && <p>Passwords don't match!</p>}
-        </Form.Field>
-        <p style={{ color: "red" }} hidden={!registrationFailure}>
-          Registration Failure
+              <Form.Control asChild>
+                <input
+                  className="register-input"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setPasswordMismatch(false);
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
+              </Form.Control>
+              {passwordMismatch && <p>Passwords don't match!</p>}
+            </div>
+          </Form.Field>
+
+          <div className="register-button-container">
+            <Form.Submit className="register-button" asChild>
+              <button
+                className="register-submit-button"
+                disabled={passwordMismatch}
+              >
+                Register
+              </button>
+            </Form.Submit>
+          </div>
+        </Form.Root>
+        <p className="login-text">
+          Already signed up? Log in{" "}
+          <Link className="login-link" to="/login">
+            here
+          </Link>
         </p>
-        <Form.Submit asChild>
-          <button
-            className="register-submit-button"
-            disabled={passwordMismatch}
-          >
-            Register
-          </button>
-        </Form.Submit>
-      </Form.Root>
-      <p>
-        Already signed up? Log in <Link to="/login">here</Link>
+      </div>
+      <p style={{ color: "red" }} hidden={!registrationFailure}>
+        Registration Failure
       </p>
     </div>
   );

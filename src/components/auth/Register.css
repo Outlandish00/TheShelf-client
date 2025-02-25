@@ -1,0 +1,141 @@
+.register-container{
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color:#e0e0ce ;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 650px;
+    background-color:#1c3041 ;
+}
+.register-form-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 350px;
+}
+
+.register-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 250px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-title h1{
+    font-size: 75px;
+    margin: 0;
+}
+.register-title h3{
+    margin: 0;
+    font-size: 45px;
+}
+
+.register-email-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    width: 500px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-password-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    width: 500px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-firstname-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    width: 500px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-lastname-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    width: 500px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-username-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    width: 500px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-confirm-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    width: 500px;
+    font-family: "Abril Fatface", serif;
+    color: #e0e0ce;
+}
+.register-button{
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    font-family: "Abril Fatface", serif;
+    padding: 0;
+    background-color: #7371fc;
+    border: 0;
+    color: #e0e0ce;
+    cursor: pointer;
+}
+.register-button:hover{
+    width: 155px;
+    height: 55px;
+    box-shadow: 2px 2px 2px 2px #8280eb;
+    font-size: 33px;
+}
+.register-button-container{
+    display: flex;
+    width: 500px;
+    justify-content: center;
+}
+
+.login-text{
+    font-family: "Abril Fatface", serif;
+    color:#e0e0ce;
+    font-size: 25px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.login-link{
+    color: #7371fc;
+}
+.register-input{
+    /* font-size: 30px; */
+    padding: 2px;
+    width: 280px;
+    font-size: 30px;
+    font-family: "Abril Fatface", serif;
+    background-color: #e0e0ce;
+    height: 30px;
+}
