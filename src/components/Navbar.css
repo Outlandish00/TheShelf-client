@@ -12,16 +12,48 @@
 }
 .NavigationMenuList {
     width: 100vw;
+    height: 8vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items:center;
     list-style: none;
     margin: 0;
+    padding: 0;
+
+}
+.navbar-left{
+    display: flex;
 
 }
 
 .NavigationMenuLink{
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #7371fc; 
     text-decoration: none;
+    height: 7.6vh;
+    width: 10vw;
+    border: 2px solid #7371fc;
+    color: #7371fc;
+    font-family: "Abril Fatface", serif;
+    font-size: 30px;
+    cursor: pointer;
 }
+
+.NavigationMenuLink:hover, .log-out-button:hover{
+    background-color: #7371fc;
+    color: #1c3041;
+}
+.log-out-button{
+    width: 10vw;
+    height: 7.6vh;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: #7371fc;
+    font-family: "Abril Fatface", serif;
+    font-size: 30px;
+}
+

@@ -9,25 +9,35 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
   return (
     <NavigationMenu.Root className="nav-bar-menu" orientation="horizontal">
       <NavigationMenu.List className="NavigationMenuList">
-        <NavigationMenu.Item>
-          <NavigationMenu.Link className="NavigationMenuLink" href="/">
-            Home
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
-        <NavigationMenu.Item className="NavigationMenuItem">
-          <NavigationMenu.Link className="NavigationMenuLink">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                logout().then(() => {
-                  setLoggedInUser(null);
-                });
-              }}
-            >
-              Log out
-            </button>
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
+        <div className="navbar-left">
+          <NavigationMenu.Item>
+            <NavigationMenu.Link className="NavigationMenuLink" href="/">
+              Home
+            </NavigationMenu.Link>
+          </NavigationMenu.Item>
+          <NavigationMenu.Item>
+            <NavigationMenu.Link className="NavigationMenuLink">
+              Watchlists
+            </NavigationMenu.Link>
+          </NavigationMenu.Item>
+        </div>
+        <div className="navbar-right">
+          <NavigationMenu.Item className="NavigationMenuItem">
+            <NavigationMenu.Link className="NavigationMenuLink">
+              <button
+                className="log-out-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  logout().then(() => {
+                    setLoggedInUser(null);
+                  });
+                }}
+              >
+                Log out
+              </button>
+            </NavigationMenu.Link>
+          </NavigationMenu.Item>
+        </div>
       </NavigationMenu.List>
     </NavigationMenu.Root>
   );
