@@ -14,7 +14,7 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
             Home
           </NavigationMenu.Link>
         </NavigationMenu.Item>
-        <NavigationMenu.Item className="NavigationMenuLink">
+        <NavigationMenu.Item className="NavigationMenuItem">
           <NavigationMenu.Link className="NavigationMenuLink">
             <button
               onClick={(e) => {
