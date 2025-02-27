@@ -33,7 +33,7 @@
     color: #7371fc; 
     text-decoration: none;
     height: 7.6vh;
-    width: 10vw;
+    width: auto;
     border: 2px solid #7371fc;
     color: #7371fc;
     font-family: "Abril Fatface", serif;
@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 
-.NavigationMenuLink:hover, .log-out-button:hover{
+.NavigationMenuLink:hover, .log-out-button:hover, .NavigationMenuTrigger:hover{
     background-color: #7371fc;
     color: #1c3041;
 }
@@ -55,5 +55,63 @@
     color: #7371fc;
     font-family: "Abril Fatface", serif;
     font-size: 30px;
+}
+.NavigationMenuTrigger{
+    width: 10vw;
+    height: 7.6vh;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: #7371fc;
+    font-family: "Abril Fatface", serif;
+    font-size: 30px;
+}
+
+.NavigationMenuContent{
+    position: absolute;
+    top: 0;
+    left: 0;
+	width: 100%;
+	animation-duration: 250ms;
+	animation-timing-function: ease; 
+}
+
+.custom-navbar-select{
+    display: flex;
+    width: 145px;
+    height: 100%;
+    font-family: "Abril Fatface", serif;
+    font-size: 30px;
+    background-color: #1c3041;
+    color: #7371fc;
+    justify-content: center;
+    align-items: center;
+}
+.custom-navbar-select select {
+    display: flex;
+    width: 145px;
+    height: 100%;
+    font-family: "Abril Fatface", serif;
+    font-size: 30px;
+    background-color: #1c3041;
+    color: #7371fc;
+    justify-content: center;
+    align-items: center;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+
+
+.custom-navbar-select :hover{
+    background-color: #7371fc;
+    color: #1c3041;
+}
+
+.hidden-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 

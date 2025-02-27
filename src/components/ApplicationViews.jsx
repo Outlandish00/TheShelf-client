@@ -2,7 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import { HomePage } from "./home/HomePage";
+import { Homepage } from "./homepage/Homepage";
+import { AllMovies } from "./movie/AllMovies";
+import { NewMovie } from "./movie/NewMovie";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -12,7 +14,23 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <HomePage />
+              <Homepage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="all-movies"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <AllMovies />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="new-movie"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <NewMovie loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
