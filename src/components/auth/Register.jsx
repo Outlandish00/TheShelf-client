@@ -141,7 +141,7 @@ export default function Register({ setLoggedInUser }) {
                   }}
                 />
               </Form.Control>
-              {passwordMismatch && <p>Passwords don't match!</p>}
+              {passwordMismatch && window.alert("Password don't match!")}
             </div>
           </Form.Field>
 
@@ -163,9 +163,7 @@ export default function Register({ setLoggedInUser }) {
           </Link>
         </p>
       </div>
-      <p style={{ color: "red" }} hidden={!registrationFailure}>
-        Registration Failure
-      </p>
+      {registrationFailure && window.alert("Registration failed")}
     </div>
   );
 }

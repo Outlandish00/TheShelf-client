@@ -68,10 +68,6 @@ export default function Login({ setLoggedInUser }) {
           </div>
         </Form.Root>
 
-        {/* 
-        <FormFeedback>Login failed.</FormFeedback>
-      </FormGroup>
-       */}
         <p className="register-text">
           Not signed up? Register{" "}
           <Link className="register-link" to="/register">
@@ -79,7 +75,7 @@ export default function Login({ setLoggedInUser }) {
           </Link>
         </p>
       </div>
-      {failedLogin && <p>Log in Failed!</p>}
+      {failedLogin && window.alert("Login Failed!")}
     </div>
   );
 }
