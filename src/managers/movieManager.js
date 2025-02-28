@@ -6,7 +6,6 @@ export const getMovies = () => {
 
 export const searchForMovieDataByTitle = (title) => {
   const url = `${_apiUrl}/search/${title}`;
-  console.log("Request URL:", url);
   return fetch(url)
     .then((res) => {
       if (!res.ok) {
@@ -15,7 +14,6 @@ export const searchForMovieDataByTitle = (title) => {
       return res.json();
     })
     .then((data) => {
-      console.log("Movie Data:", data);
       return data;
     });
 };

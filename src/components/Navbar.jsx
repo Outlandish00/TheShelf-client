@@ -44,10 +44,21 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
               </select>
             </div>
           </NavigationMenu.Item>
-          <NavigationMenu.Item>
-            <NavigationMenu.Link className="NavigationMenuLink">
-              Watchlists
-            </NavigationMenu.Link>
+          <NavigationMenu.Item className="NavigationMenuLink">
+            <div className="custom-navbar-select">
+              <select
+                onChange={(event) => {
+                  handleSelectChange(event);
+                }}
+                value={selectedOption}
+              >
+                <option value="0" className="hidden-option" selected disabled>
+                  Watchlist
+                </option>
+                <option value="/watchlist">My Watchlists</option>
+                <option value="/watchlist/new">New Watchlists</option>
+              </select>
+            </div>
           </NavigationMenu.Item>
         </div>
         <div className="navbar-right">

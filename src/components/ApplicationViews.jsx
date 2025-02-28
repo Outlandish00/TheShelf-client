@@ -5,6 +5,10 @@ import Register from "./auth/Register";
 import { Homepage } from "./homepage/Homepage";
 import { AllMovies } from "./movie/AllMovies";
 import { NewMovie } from "./movie/NewMovie";
+import { WatchlistPage } from "./watchlist/WatchlistPage";
+import { WatchlistDetails } from "./watchlist/WatchlistDetails";
+import { NewWatchlistForm } from "./watchlist/NewWatchlistForm";
+import { EditWatchlistForm } from "./watchlist/EditWatchlistForm";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -34,6 +38,40 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+        <Route path="watchlist">
+          <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <WatchlistPage loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path=":id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <WatchlistDetails />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path=":id/edit"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <EditWatchlistForm />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="new"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <NewWatchlistForm loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

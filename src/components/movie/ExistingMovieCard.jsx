@@ -8,16 +8,19 @@ export const ExistingMovieCard = ({
   setNewMovieTitle,
   setOmbdMovieObject,
 }) => {
-  useEffect(() => {
-    console.log(OmdbMovieObject);
-  }, [OmdbMovieObject]);
-
   const handleYes = () => {
     const newMovieObject = {
       userId: loggedInUser.id,
       title: OmdbMovieObject.Title,
       genre: OmdbMovieObject.Genre,
+      actors: OmdbMovieObject.Actors,
+      director: OmdbMovieObject.Director,
+      posterLink: OmdbMovieObject.Poster,
+      rated: OmdbMovieObject.Rated,
+      rating: OmdbMovieObject.imdbRating,
+      releaseYEar: OmdbMovieObject.Year,
     };
+    console.log(newMovieObject);
     saveMovie(newMovieObject).then(() => setSearched(false));
   };
   const handleNo = () => {
