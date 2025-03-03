@@ -44,3 +44,9 @@ export const updateAWatchlist = (newWatchlist) => {
     body: JSON.stringify(newWatchlist),
   });
 };
+
+export const getWatchlistsByUserIdWithMovieId = (userId, movieId) => {
+  return fetch(`${_apiUrl}?userId=${userId}&movieId=${movieId}`).then((res) =>
+    res.json()
+  );
+};

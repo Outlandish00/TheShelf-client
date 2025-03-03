@@ -1,10 +1,12 @@
 import { Form, RadioGroup } from "radix-ui";
 import { useState } from "react";
-import { Button } from "reactstrap";
-import { postNewWatchlist } from "../../managers/watchlistManager";
+import {
+  getWatchlistsByUserId,
+  postNewWatchlist,
+} from "../../managers/watchlistManager";
 import { useNavigate } from "react-router-dom";
 
-export const NewWatchlistForm = ({ loggedInUser }) => {
+export const NewWatchlistForm = ({ loggedInUser, setUsersWatchlist }) => {
   const [watchlistTitle, setWatchlistTitle] = useState("");
   const [isPrivate, setIsPrivate] = useState(false);
   const navigate = useNavigate();
@@ -15,8 +17,13 @@ export const NewWatchlistForm = ({ loggedInUser }) => {
       userId: loggedInUser.id,
       isPrivate: isPrivate,
     };
-    console.log(newWatchlist);
-    postNewWatchlist(newWatchlist).then(() => navigate("/watchlist"));
+
+    postNewWatchlist(newWatchlist).then(() => {
+      getWatchlistsByUserId(loggedInUser.id).then((data) =>
+        setUsersWatchlist(data)
+      );
+      navigate("/watchlist");
+    });
   };
 
   return (
@@ -60,7 +67,7 @@ export const NewWatchlistForm = ({ loggedInUser }) => {
           </Form.Control>
         </Form.Field>
         <Form.Submit asChild>
-          <Button
+          <button
             className="watchlist-button"
             onClick={(event) => {
               event.preventDefault();
@@ -68,7 +75,7 @@ export const NewWatchlistForm = ({ loggedInUser }) => {
             }}
           >
             Save Watchlist
-          </Button>
+          </button>
         </Form.Submit>
       </Form.Root>
     </div>
