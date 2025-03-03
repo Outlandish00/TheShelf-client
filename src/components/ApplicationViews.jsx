@@ -11,6 +11,7 @@ import { NewWatchlistForm } from "./watchlist/NewWatchlistForm";
 import { EditWatchlistForm } from "./watchlist/EditWatchlistForm";
 import { useEffect, useState } from "react";
 import { getWatchlistsByUserId } from "../managers/watchlistManager";
+import { AllWatchlistPage } from "./watchlist/AllWatchlistPage";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   const [usersWatchlist, setUsersWatchlist] = useState([]);
@@ -85,6 +86,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                   setUsersWatchlist={setUsersWatchlist}
                   loggedInUser={loggedInUser}
                 />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="all"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <AllWatchlistPage loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />

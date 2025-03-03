@@ -1,7 +1,7 @@
 const _apiUrl = "/api/watchlist";
 
 export const getWatchlistsByUserId = (userId) => {
-  return fetch(`${_apiUrl}?userId=${userId}`).then((res) => res.json());
+  return fetch(`${_apiUrl}/userId=${userId}`).then((res) => res.json());
 };
 
 export const getWatchlistById = (watchlistId) => {
@@ -49,4 +49,8 @@ export const getWatchlistsByUserIdWithMovieId = (userId, movieId) => {
   return fetch(`${_apiUrl}?userId=${userId}&movieId=${movieId}`).then((res) =>
     res.json()
   );
+};
+
+export const getAllWatchlists = () => {
+  return fetch(`${_apiUrl}`).then((res) => res.json());
 };

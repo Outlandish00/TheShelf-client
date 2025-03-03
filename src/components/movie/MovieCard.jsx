@@ -17,7 +17,9 @@ export const MovieCard = ({
   setUsersWatchlist,
 }) => {
   useEffect(() => {
-    const movieWatchlists = usersWatchlist.reduce((acc, watchlist) => {
+    if (!usersWatchlist || !movie?.id) return;
+
+    const movieWatchlists = usersWatchlist?.reduce((acc, watchlist) => {
       watchlist.watchlistMedia.forEach((media) => {
         if (!acc[media.movieId]) {
           acc[media.movieId] = [];
@@ -169,7 +171,7 @@ export const MovieCard = ({
                         }
                       >
                         <option value="0">Watchlists</option>
-                        {usersWatchlist.map((wl) => (
+                        {usersWatchlist?.map((wl) => (
                           <option key={wl.id} value={wl.id}>
                             {wl.title}
                           </option>
