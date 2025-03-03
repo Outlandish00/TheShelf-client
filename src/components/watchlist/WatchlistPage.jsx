@@ -3,7 +3,7 @@ import {
   deleteWatchList,
   getWatchlistsByUserId,
 } from "../../managers/watchlistManager";
-import { Card, CardBody, CardTitle } from "reactstrap";
+
 import { useNavigate } from "react-router-dom";
 
 export const WatchlistPage = ({ loggedInUser }) => {
@@ -28,29 +28,27 @@ export const WatchlistPage = ({ loggedInUser }) => {
     <div className="watchlist-container">
       {watchlists.map((wl) => {
         return (
-          <Card key={wl.id} onClick={() => navigate(`${wl.id}`)}>
-            <CardBody>
-              <CardTitle>{wl.title}</CardTitle>
-              <button
-                className="watchlist-edit-button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleEdit(wl.id);
-                }}
-              >
-                Edit
-              </button>
-              <button
-                className="watchlist-delete-button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDelete(wl.id);
-                }}
-              >
-                Delete
-              </button>
-            </CardBody>
-          </Card>
+          <div key={wl.id} onClick={() => navigate(`${wl.id}`)}>
+            <div>{wl.title}</div>
+            <button
+              className="watchlist-edit-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleEdit(wl.id);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              className="watchlist-delete-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(wl.id);
+              }}
+            >
+              Delete
+            </button>
+          </div>
         );
       })}
     </div>

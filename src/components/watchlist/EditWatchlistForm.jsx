@@ -5,7 +5,6 @@ import {
   updateAWatchlist,
 } from "../../managers/watchlistManager";
 import { Form, RadioGroup } from "radix-ui";
-import { Button } from "reactstrap";
 
 export const EditWatchlistForm = () => {
   const { id } = useParams();
@@ -70,7 +69,7 @@ export const EditWatchlistForm = () => {
           </Form.Control>
         </Form.Field>
         <Form.Submit asChild>
-          <Button
+          <button
             className="edit-watchlist-button"
             onClick={(e) => {
               e.preventDefault();
@@ -78,7 +77,7 @@ export const EditWatchlistForm = () => {
             }}
           >
             Save Watchlist
-          </Button>
+          </button>
         </Form.Submit>
       </Form.Root>
     </div>
