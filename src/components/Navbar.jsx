@@ -55,6 +55,7 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
                 <option value="0" className="hidden-option" selected disabled>
                   Watchlist
                 </option>
+                <option value="/watchlist/all">All Watchlists</option>
                 <option value="/watchlist">My Watchlists</option>
                 <option value="/watchlist/new">New Watchlists</option>
               </select>
