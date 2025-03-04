@@ -18,6 +18,20 @@ export const searchForMovieDataByTitle = (title) => {
     });
 };
 
+export const searchForMovieDataByImbdId = (imdbId) => {
+  const url = `${_apiUrl}/search/id=${imdbId}`;
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`Http Error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+};
+
 export const saveMovie = (movieObject) => {
   return fetch(_apiUrl, {
     method: "POST",
@@ -26,4 +40,8 @@ export const saveMovie = (movieObject) => {
     },
     body: JSON.stringify(movieObject),
   });
+};
+
+export const getMovieById = (id) => {
+  return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 };

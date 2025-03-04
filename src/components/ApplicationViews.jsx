@@ -12,6 +12,7 @@ import { EditWatchlistForm } from "./watchlist/EditWatchlistForm";
 import { useEffect, useState } from "react";
 import { getWatchlistsByUserId } from "../managers/watchlistManager";
 import { AllWatchlistPage } from "./watchlist/AllWatchlistPage";
+import { MovieDetails } from "./movie/MovieDetails";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   const [usersWatchlist, setUsersWatchlist] = useState([]);
@@ -33,7 +34,38 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route
+        <Route path="movie">
+          <Route
+            path="all"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <AllMovies
+                  loggedInUser={loggedInUser}
+                  usersWatchlist={usersWatchlist}
+                  setUsersWatchlist={setUsersWatchlist}
+                />
+              </AuthorizedRoute>
+            }
+          />
+
+          <Route
+            path="new"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <NewMovie loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path=":id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <MovieDetails />
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
+        {/* <Route
           path="all-movies"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
@@ -52,7 +84,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               <NewMovie loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
-        />
+        /> */}
         <Route path="watchlist">
           <Route
             index

@@ -10,15 +10,7 @@ export const ExistingMovieCard = ({
 }) => {
   const handleYes = () => {
     const newMovieObject = {
-      userId: loggedInUser.id,
-      title: OmdbMovieObject.Title,
-      genre: OmdbMovieObject.Genre,
-      actors: OmdbMovieObject.Actors,
-      director: OmdbMovieObject.Director,
-      posterLink: OmdbMovieObject.Poster,
-      rated: OmdbMovieObject.Rated,
-      rating: OmdbMovieObject.imdbRating,
-      releaseYEar: OmdbMovieObject.Year,
+      imbdId: OmdbMovieObject.imdbID,
     };
     console.log(newMovieObject);
     saveMovie(newMovieObject).then(() => setSearched(false));

@@ -17,7 +17,7 @@ export const AllWatchlistPage = ({ loggedInUser }) => {
   };
 
   const handleEdit = (id) => {
-    navigate(`${id}/edit`);
+    navigate(`/watchlist/${id}/edit`);
   };
 
   useEffect(() => {}, []);
