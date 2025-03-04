@@ -39,8 +39,8 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
                 <option value="0" className="hidden-option" selected disabled>
                   Movies
                 </option>
-                <option value="/all-movies">All movies</option>
-                <option value="/new-movie">New Movie</option>
+                <option value="/movie/all">All movies</option>
+                <option value="/movie/new">New Movie</option>
               </select>
             </div>
           </NavigationMenu.Item>

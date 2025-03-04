@@ -17,6 +17,9 @@ export const MovieCard = ({
   setUsersWatchlist,
 }) => {
   useEffect(() => {
+    console.log(movie);
+  }, [movie]);
+  useEffect(() => {
     if (!usersWatchlist || !movie?.id) return;
 
     const movieWatchlists = usersWatchlist?.reduce((acc, watchlist) => {
@@ -85,9 +88,8 @@ export const MovieCard = ({
 
   return (
     <div className="movie-card-outer">
-      <div className="movie-card-image"></div>
-      <div className="movie-card-title">
-        <h2>{movie.title}</h2>
+      <div className="movie-card-image">
+        <img src={movie.Poster} />
       </div>
       <div className="add-to-watchlist">
         {isInWatchlist ? (

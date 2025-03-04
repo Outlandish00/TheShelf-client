@@ -1,0 +1,13 @@
+.all-movies-container{
+    height: auto;
+    width: 100px;
+    display: flex;
+}
+
+.moviecard-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    height: 92vh;
+    width: 100vw;
+}
