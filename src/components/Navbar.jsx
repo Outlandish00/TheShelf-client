@@ -6,9 +6,35 @@ import { CaretDownIcon } from "@radix-ui/react-icons";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
+  const [isVisible, setIsVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    // Function to handle mouse movement
+    const handleMouseMove = (e) => {
+      if (e.clientY <= 40) {
+        setIsVisible(true); // Show navbar if mouse is near top
+      }
+    };
+
+    // Add event listener for mouse move
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Cleanup event listener when component unmounts
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    setIsVisible(true); // Show the navbar when hovering over the top
+  };
+
+  // Handle mouse leave when leaving the navbar.
+  const handleMouseLeave = () => {
+    setIsVisible(false); // Hide the navbar when mouse leaves the navbar
+  };
 
   useEffect(() => {
     setSelectedOption("0");
@@ -20,8 +46,15 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
   };
 
   return (
-    <NavigationMenu.Root className="nav-bar-menu" orientation="horizontal">
-      <NavigationMenu.List className="NavigationMenuList">
+    <NavigationMenu.Root>
+      <NavigationMenu.List
+        className="nav-bar-menu"
+        style={{
+          "--navbar-top": isVisible ? "0" : "-80px",
+        }}
+        onMouseEnter={() => setIsVisible(true)} // Keep navbar visible when hovered
+        onMouseLeave={() => handleMouseLeave()}
+      >
         <div className="navbar-left">
           <NavigationMenu.Item>
             <NavigationMenu.Link className="NavigationMenuLink" href="/">

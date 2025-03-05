@@ -2,6 +2,7 @@ import { Form } from "radix-ui";
 import { useState } from "react";
 import { searchForMovieDataByTitle } from "../../managers/movieManager";
 import { ExistingMovieCard } from "./ExistingMovieCard";
+import "./NewMovie.css";
 
 export const NewMovie = ({ loggedInUser }) => {
   const [newMovieTitle, setNewMovieTitle] = useState("");
@@ -17,8 +18,8 @@ export const NewMovie = ({ loggedInUser }) => {
   };
 
   return (
-    <>
-      <Form.Root className="newCar-formRoot">
+    <div className="new-movie-container">
+      <Form.Root className="newMovie-formRoot">
         <Form.Field className="newMovie-name">
           <Form.Label className="newMovie-title-label">
             {" "}
@@ -54,6 +55,6 @@ export const NewMovie = ({ loggedInUser }) => {
           />
         )}
       </div>
-    </>
+    </div>
   );
 };

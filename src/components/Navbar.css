@@ -6,19 +6,29 @@
 
 .nav-bar-menu{
     display: flex;
-    background-color: #1c3041;
+    background-color: #e0e0ce;
     min-width: 1000px;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    position: fixed;
+    top: var(--navbar-top, -60px); /* Use the CSS variable here */
+    left: 0;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    transition: top 0.3s ease-in-out;
 }
 .NavigationMenuList {
     width: 100vw;
-    height: 8vh;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items:center;
     list-style: none;
     margin: 0;
     padding: 0;
+    
 
 }
 .navbar-left{
@@ -32,22 +42,23 @@
     justify-content: center;
     color: #7371fc; 
     text-decoration: none;
-    height: 7.6vh;
+    height: 38px;
     width: auto;
     border: 2px solid #7371fc;
     color: #7371fc;
     font-family: "Abril Fatface", serif;
     font-size: 30px;
     cursor: pointer;
+    min-width: 145px;
 }
 
 .NavigationMenuLink:hover, .log-out-button:hover, .NavigationMenuTrigger:hover{
     background-color: #7371fc;
-    color: #1c3041;
+    color: #e0e0ce;
 }
 .log-out-button{
     width: 10vw;
-    height: 7.6vh;
+    height: 40px;
     background-color: transparent;
     border: 0;
     padding: 0;
@@ -87,6 +98,10 @@
     color: #7371fc;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+.custom-navbar-select option{
+    text-align: center;
 }
 .custom-navbar-select select {
     display: flex;
@@ -94,7 +109,7 @@
     height: 100%;
     font-family: "Abril Fatface", serif;
     font-size: 30px;
-    background-color: #1c3041;
+    background-color: #e0e0ce;
     color: #7371fc;
     justify-content: center;
     align-items: center;
@@ -105,8 +120,8 @@
 
 
 .custom-navbar-select :hover{
-    background-color: #7371fc;
-    color: #1c3041;
+    background-color: #1c3041;
+    color: #7371fc;
 }
 
 .hidden-option{

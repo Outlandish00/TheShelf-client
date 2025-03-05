@@ -3,6 +3,7 @@ import {
   deleteWatchList,
   getWatchlistsByUserId,
 } from "../../managers/watchlistManager";
+import "./WatchlistPage.css";
 
 import { useNavigate } from "react-router-dom";
 
