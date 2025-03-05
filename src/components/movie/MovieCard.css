@@ -36,7 +36,7 @@
     width: 1000px;
   }
 
-  img{
+  .movie-card-image img{
     height: 350px;
     width: 250px;
     object-fit: cover;

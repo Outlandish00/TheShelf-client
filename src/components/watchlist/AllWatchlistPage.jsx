@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   deleteWatchList,
   getAllWatchlists,
@@ -19,9 +18,10 @@ export const AllWatchlistPage = ({ loggedInUser }) => {
   const handleEdit = (id) => {
     navigate(`/watchlist/${id}/edit`);
   };
+  useEffect(() => {
+    getAllWatchlists().then((data) => setAllWatchlists(data));
+  }, []);
 
-  useEffect(() => {}, []);
-  getAllWatchlists().then((data) => setAllWatchlists(data));
   return (
     <div className="watchlist-container">
       {allWatchLists.map((wl) => {
