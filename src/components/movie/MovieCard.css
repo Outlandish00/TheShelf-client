@@ -32,7 +32,10 @@
   }
 
   .movie-card-outer{
-    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
     width: 1000px;
   }
 

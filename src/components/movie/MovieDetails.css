@@ -2,6 +2,12 @@
     height: 40px;
 }
 
+.movie-title h1{
+    font-family: "DM Serif Display", serif;
+    font-size: 60px;
+    margin: 0;
+}
+
 .imdb-rating{
     position:absolute;
     display: flex;

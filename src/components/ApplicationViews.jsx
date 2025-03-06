@@ -60,7 +60,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path=":id"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <MovieDetails usersWatchlist={usersWatchlist} />
+                <MovieDetails
+                  loggedInUser={loggedInUser}
+                  setUsersWatchlist={setUsersWatchlist}
+                  usersWatchlist={usersWatchlist}
+                />
               </AuthorizedRoute>
             }
           />
