@@ -7,9 +7,17 @@ import { useParams } from "react-router-dom";
 import ImdbLogo from "../../assets/IMDB-Logo.svg";
 import "./MovieDetails.css";
 import { Dialog } from "radix-ui";
-import { newWatchlistMedia } from "../../managers/wathchlistMediaManager";
+import {
+  deleteWatchlistMedia,
+  newWatchlistMedia,
+} from "../../managers/wathchlistMediaManager";
+import { getWatchlistsByUserId } from "../../managers/watchlistManager";
 
-export const MovieDetails = ({ usersWatchlist }) => {
+export const MovieDetails = ({
+  usersWatchlist,
+  setUsersWatchlist,
+  loggedInUser,
+}) => {
   const [omdbMovie, setOmdbMovie] = useState({});
   const [movie, setMovie] = useState({});
   const [showPlot, setShowPlot] = useState(false);
@@ -24,7 +32,11 @@ export const MovieDetails = ({ usersWatchlist }) => {
       watchlistId: selectedWatchlistId,
     };
     console.log(newWatchlistMediaObject);
-    newWatchlistMedia(newWatchlistMediaObject);
+    newWatchlistMedia(newWatchlistMediaObject).then(() => {
+      getWatchlistsByUserId(loggedInUser.id).then((res) =>
+        setUsersWatchlist(res)
+      );
+    });
   };
 
   const handleCloseDialog = () => {
@@ -43,6 +55,16 @@ export const MovieDetails = ({ usersWatchlist }) => {
 
     setIsAlreadyInWatchlist(isInWatchlist);
     setSelectedWatchlistId(selectedId);
+  };
+
+  const handleRemovingFromWatchlist = () => {
+    deleteWatchlistMedia(selectedWatchlistId, id).then(() => {
+      setIsAlreadyInWatchlist(false);
+
+      getWatchlistsByUserId(loggedInUser.id).then((res) =>
+        setUsersWatchlist(res)
+      );
+    });
   };
 
   useEffect(() => {
@@ -120,9 +142,20 @@ export const MovieDetails = ({ usersWatchlist }) => {
                   ))}
                 </select>
                 <div className="add-to-watchlist-buttons">
-                  <Dialog.Close asChild>
-                    <button onClick={() => handleAddToWatchlist()}>Add</button>
-                  </Dialog.Close>
+                  {isAlreadyInWatchlist ? (
+                    <Dialog.Close asChild>
+                      <button onClick={() => handleRemovingFromWatchlist()}>
+                        Remove
+                      </button>
+                    </Dialog.Close>
+                  ) : (
+                    <Dialog.Close asChild>
+                      <button onClick={() => handleAddToWatchlist()}>
+                        Add
+                      </button>
+                    </Dialog.Close>
+                  )}
+
                   <Dialog.Close asChild>
                     <button onClick={() => handleCloseDialog()}>Close</button>
                   </Dialog.Close>

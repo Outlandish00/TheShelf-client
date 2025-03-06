@@ -52,19 +52,22 @@ export const AllMovies = ({
     <div className="moviecard-container">
       {omdbMovieObjects.map((m) => {
         return (
-          <div
-            key={m.id}
-            onClick={() => handleClick(m)}
-            className="all-movies-container"
-          >
-            <MovieCard
+          <>
+            <div
               key={m.id}
-              usersWatchlist={usersWatchlist}
-              movie={m}
-              loggedInUser={loggedInUser}
-              setUsersWatchlist={setUsersWatchlist}
-            />
-          </div>
+              onClick={() => handleClick(m)}
+              className="all-movies-container"
+            >
+              <MovieCard
+                key={m.id}
+                usersWatchlist={usersWatchlist}
+                movie={m}
+                loggedInUser={loggedInUser}
+                setUsersWatchlist={setUsersWatchlist}
+              />
+              <div className="hover-text">{m.Title}</div>
+            </div>
+          </>
         );
       })}
     </div>

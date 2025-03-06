@@ -10,8 +10,9 @@ import {
 export const WatchlistDetails = () => {
   const { id } = useParams();
   const [currentWatchlist, setCurrentWatchlist] = useState({});
-  const [watchlistMedia, setWatchlistMedia] = useState({});
+  const [watchlistMedia, setWatchlistMedia] = useState([]);
   const [watchlistMovieObjects, setWatchlistMoviebjects] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     getWatchlistById(id).then((res) => setCurrentWatchlist(res));
@@ -22,13 +23,20 @@ export const WatchlistDetails = () => {
 
     movieObjects = await Promise.all(
       watchlistMedia.map(async (m) => {
-        const movie = await getMovieById(m.id);
-        console.log(movie);
-        return searchForMovieDataByImbdId(movie.imbdId);
+        return await getMovieById(m.movieId);
       })
     );
-    setWatchlistMoviebjects(movieObjects);
+    setMovies(movieObjects);
+    console.log(movieObjects);
   };
+
+  useEffect(() => {
+    movies.map((m) => {
+      searchForMovieDataByImbdId(m.imbdId).then((res) =>
+        setWatchlistMoviebjects((prev) => [...prev, res])
+      );
+    });
+  }, [movies]);
 
   useEffect(() => {
     if (watchlistMedia.length > 0) {
@@ -46,14 +54,21 @@ export const WatchlistDetails = () => {
 
   return (
     <>
-      <h1>{currentWatchlist.title}</h1>
-      {watchlistMovieObjects?.map((mediaItem, index) => {
-        return (
-          <div key={mediaItem?.id}>
-            <img src={mediaItem?.Poster} />
-          </div>
-        );
-      })}
+      {watchlistMovieObjects ? (
+        <>
+          {" "}
+          <h1>{currentWatchlist.title}</h1>
+          {watchlistMovieObjects.map((mediaItem, index) => {
+            return (
+              <div key={mediaItem?.id}>
+                <img src={mediaItem?.Poster} />
+              </div>
+            );
+          })}
+        </>
+      ) : (
+        "Loading..."
+      )}
     </>
   );
 };
