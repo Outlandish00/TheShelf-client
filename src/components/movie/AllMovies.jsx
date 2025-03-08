@@ -6,6 +6,7 @@ import {
 import { MovieCard } from "./MovieCard";
 import { useNavigate } from "react-router-dom";
 import "./AllMovies.css";
+import ImdbLogo from "../../assets/IMDB-Logo.svg";
 
 export const AllMovies = ({
   usersWatchlist,
@@ -66,6 +67,13 @@ export const AllMovies = ({
                 setUsersWatchlist={setUsersWatchlist}
               />
               <div className="hover-text">{m.Title}</div>
+              <div className="bottom-hover-text">
+                <div className="imdb-rating-all">
+                  {m.imdbRating}
+                  <img src={ImdbLogo} className="imdb-logo-allmovies" />
+                </div>
+                <div className="rating-letter">{m.Rated}</div>
+              </div>
             </div>
           </>
         );

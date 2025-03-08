@@ -4,6 +4,8 @@ import {
   getAllWatchlists,
 } from "../../managers/watchlistManager";
 import { useNavigate } from "react-router-dom";
+import "./AllWatchlistPage.css";
+import { WatchlistCard } from "./WatchlistCard";
 
 export const AllWatchlistPage = ({ loggedInUser }) => {
   const [allWatchLists, setAllWatchlists] = useState([]);
@@ -23,36 +25,16 @@ export const AllWatchlistPage = ({ loggedInUser }) => {
   }, []);
 
   return (
-    <div className="watchlist-container">
+    <div className="all-watchlist-container">
       {allWatchLists.map((wl) => {
         return (
-          <div key={wl.id} onClick={() => navigate(`/watchlist/${wl.id}`)}>
-            <div>{wl.title}</div>
-            {loggedInUser.id == wl.userId ? (
-              <>
-                <button
-                  className="watchlist-edit-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEdit(wl.id);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  className="watchlist-delete-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDelete(wl.id);
-                  }}
-                >
-                  Delete
-                </button>
-              </>
-            ) : (
-              ""
-            )}
-          </div>
+          <WatchlistCard
+            key={wl.id}
+            watchlist={wl}
+            loggedInUser={loggedInUser}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         );
       })}
     </div>

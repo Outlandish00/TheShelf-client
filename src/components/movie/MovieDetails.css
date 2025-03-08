@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1c3041;
+    background-color: #1c1c1e;
     height: 100vh;
     flex-direction: column;
 }
@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #14222e;
+    background-color: #2c2c34;
     min-width: 60vw;
     border-radius: 5%;
     color: #a594f9;
@@ -46,10 +46,10 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #14222e;
+    background-color: transparent;
     min-width: 60vw;
     border-radius: 5%;
-    color: #a594f9;
+    color: #f7f8fa;
 }
 .img-and-ratings{
     position: relative;

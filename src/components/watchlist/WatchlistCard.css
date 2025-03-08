@@ -1,0 +1,35 @@
+.watchlist-card-outer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a594f9;
+    height: 10vh;
+    border-radius: 20px;
+    width: 80vw;
+}
+.watchlist-card-outer:hover{
+    height:10.5vh;
+    width: 80.5vw;
+}
+
+.watchlist-card-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 9vh;
+    width: 70vw;
+    background-color: #2c2c34;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.watchlist-card-title{
+    color: #f7f8fa;
+    font-family: "DM Serif Display", serif;
+    font-size: 40px;
+}
+
+.watchlist-movie-count{
+    color: #f7f8fa;
+    font-family: "Rubik", sans-serif;
+    font-size: 17px;
+}

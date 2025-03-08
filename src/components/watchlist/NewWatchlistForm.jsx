@@ -1,5 +1,6 @@
 import { Form, RadioGroup } from "radix-ui";
 import { useState } from "react";
+import "./NewWatchlistForm.css";
 import {
   getWatchlistsByUserId,
   postNewWatchlist,

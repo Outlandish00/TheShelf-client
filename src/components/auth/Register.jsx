@@ -11,6 +11,7 @@ export default function Register({ setLoggedInUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [passwordMismatch, setPasswordMismatch] = useState();
   const [registrationFailure, setRegistrationFailure] = useState(false);
@@ -36,7 +37,7 @@ export default function Register({ setLoggedInUser }) {
           setLoggedInUser(user);
           navigate("/");
         } else {
-          setRegistrationFailure(true);
+          setErrorMessage("Registration failed! Please try again");
         }
       });
     }
@@ -163,7 +164,7 @@ export default function Register({ setLoggedInUser }) {
           </Link>
         </p>
       </div>
-      {registrationFailure && window.alert("Registration failed")}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
 }
