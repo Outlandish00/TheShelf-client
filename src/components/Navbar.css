@@ -45,7 +45,8 @@
     width: auto;
     border: None;
     color: #f7f8fa;
-    font-family: "Abril Fatface", serif;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
     font-size: 20px;
     cursor: pointer;
     min-width: 145px;
@@ -62,7 +63,8 @@
     padding: 0;
     margin: 0;
     color: #f7f8fa;
-    font-family: "Abril Fatface", serif;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
     font-size: 20px;
 }
 .NavigationMenuTrigger{
@@ -73,8 +75,9 @@
     padding: 0;
     margin: 0;
     color: #f7f8fa;
-    font-family: "Abril Fatface", serif;
+    font-family: "Rubik", sans-serif;
     font-size: 20px;
+    font-weight: 500;
 }
 
 .NavigationMenuContent{
@@ -90,7 +93,8 @@
     display: flex;
     width: 145px;
     height: 100%;
-    font-family: "Abril Fatface", serif;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
     font-size: 20px;
     background-color: transparent;
     color: #f7f8fa;
@@ -113,7 +117,8 @@
     display: flex;
     width: 145px;
     height: 100%;
-    font-family: "Abril Fatface", serif;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
     font-size: 20px;
     color: #f7f8fa;
     justify-content: center;
@@ -136,3 +141,11 @@
     align-items: center;
 }
 
+.nav-bar-content{
+    display: flex;
+    
+  }
+
+  .navbar-left{
+    margin-right: 200px;
+  }

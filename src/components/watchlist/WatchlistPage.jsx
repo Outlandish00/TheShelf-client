@@ -6,6 +6,7 @@ import {
 import "./WatchlistPage.css";
 
 import { useNavigate } from "react-router-dom";
+import { WatchlistCard } from "./WatchlistCard";
 
 export const WatchlistPage = ({ loggedInUser }) => {
   const [watchlists, setWatchlists] = useState([]);
@@ -29,27 +30,13 @@ export const WatchlistPage = ({ loggedInUser }) => {
     <div className="watchlist-container">
       {watchlists.map((wl) => {
         return (
-          <div key={wl.id} onClick={() => navigate(`${wl.id}`)}>
-            <div>{wl.title}</div>
-            <button
-              className="watchlist-edit-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleEdit(wl.id);
-              }}
-            >
-              Edit
-            </button>
-            <button
-              className="watchlist-delete-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDelete(wl.id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
+          <WatchlistCard
+            key={wl.id}
+            watchlist={wl}
+            loggedInUser={loggedInUser}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         );
       })}
     </div>

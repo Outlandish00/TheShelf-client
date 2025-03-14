@@ -55,62 +55,64 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
         onMouseEnter={() => setIsVisible(true)} // Keep navbar visible when hovered
         onMouseLeave={() => handleMouseLeave()}
       >
-        <div className="navbar-left">
-          <NavigationMenu.Item>
-            <NavigationMenu.Link className="NavigationMenuLink" href="/">
-              Home
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-          <NavigationMenu.Item className="NavigationMenuLink">
-            <div className="custom-navbar-select">
-              <select
-                onChange={(event) => {
-                  handleSelectChange(event);
-                }}
-                value={selectedOption}
-              >
-                <option value="0" className="hidden-option" selected disabled>
-                  Movies
-                </option>
-                <option value="/movie/all">All movies</option>
-                <option value="/movie/new">New Movie</option>
-              </select>
-            </div>
-          </NavigationMenu.Item>
-          <NavigationMenu.Item className="NavigationMenuLink">
-            <div className="custom-navbar-select">
-              <select
-                onChange={(event) => {
-                  handleSelectChange(event);
-                }}
-                value={selectedOption}
-              >
-                <option value="0" className="hidden-option" selected disabled>
-                  Watchlist
-                </option>
-                <option value="/watchlist/all">All Watchlists</option>
-                <option value="/watchlist">My Watchlists</option>
-                <option value="/watchlist/new">New Watchlists</option>
-              </select>
-            </div>
-          </NavigationMenu.Item>
-        </div>
-        <div className="navbar-right">
-          <NavigationMenu.Item className="NavigationMenuItem">
-            <NavigationMenu.Link className="NavigationMenuLink">
-              <button
-                className="log-out-button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  logout().then(() => {
-                    setLoggedInUser(null);
-                  });
-                }}
-              >
-                Log out
-              </button>
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
+        <div className="nav-bar-content">
+          <div className="navbar-left">
+            <NavigationMenu.Item>
+              <NavigationMenu.Link className="NavigationMenuLink" href="/">
+                Home
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className="NavigationMenuLink">
+              <div className="custom-navbar-select">
+                <select
+                  onChange={(event) => {
+                    handleSelectChange(event);
+                  }}
+                  value={selectedOption}
+                >
+                  <option value="0" className="hidden-option" selected disabled>
+                    Movies
+                  </option>
+                  <option value="/movie/all">All movies</option>
+                  <option value="/movie/new">New Movie</option>
+                </select>
+              </div>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className="NavigationMenuLink">
+              <div className="custom-navbar-select">
+                <select
+                  onChange={(event) => {
+                    handleSelectChange(event);
+                  }}
+                  value={selectedOption}
+                >
+                  <option value="0" className="hidden-option" selected disabled>
+                    Watchlist
+                  </option>
+                  <option value="/watchlist/all">All Watchlists</option>
+                  <option value="/watchlist">My Watchlists</option>
+                  <option value="/watchlist/new">New Watchlists</option>
+                </select>
+              </div>
+            </NavigationMenu.Item>
+          </div>
+          <div className="navbar-right">
+            <NavigationMenu.Item className="NavigationMenuItem">
+              <NavigationMenu.Link className="NavigationMenuLink">
+                <button
+                  className="log-out-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    logout().then(() => {
+                      setLoggedInUser(null);
+                    });
+                  }}
+                >
+                  Log out
+                </button>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </div>
         </div>
       </NavigationMenu.List>
     </NavigationMenu.Root>

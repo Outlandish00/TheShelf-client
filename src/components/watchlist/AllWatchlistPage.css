@@ -1,11 +1,93 @@
-.all-watchlist-container{
+.all-watchlist-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 60px;
+    gap: 20px;
     padding-top: 70px;
+    padding-left: 70px;
     height: 100vh;
+    width: 100%; /* Keep full width for the page container */
     box-sizing: border-box;
-    background-color: #1c1c1e ;
-    overflow-y: scroll;
+    background-color: #1c1c1e;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* Button wrapping each watchlist card */
+  .watchlist-card-wrapper {
+    all: unset;
+    display: block;
+    width: 30vw; /* Match the width of your card */
+    cursor: pointer;
+  }
+  
+  /* The popover content - this is separate from your cards */
+  [data-radix-popper-content-wrapper] {
+    position: fixed !important; /* Override Radix positioning */
+    top: 70px !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    left: auto !important;
+    width: 60vw !important;
+    height: 100vh !important;
+    transform: none !important; /* Remove any transforms */
+  }
+
+
+  /* The actual content inside the popover */
+  .watchlist-movie-content {
+    width: 100%;
+    height: 90vh;
+    background-color: #2c2c34;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-content: flex-start;
+  }
+  
+  /* Fix the nested div issue */
+  .watchlist-movie-content .watchlist-movie-content {
+    padding: 0;
+    height: auto;
+    box-shadow: none;
+  }
+  
+  /* Style for movie images */
+  .watchlist-movie-content img {
+    width: 180px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+  
+  .watchlist-movie-content img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Media query for mobile */
+  @media (max-width: 768px) {
+    .watchlist-card-wrapper {
+      width: 80vw;
+    }
+    
+    [data-radix-popper-content-wrapper] {
+      position: fixed !important;
+      top: auto !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 50vh !important;
+    }
 }
+
