@@ -16,10 +16,7 @@ export const WatchlistCard = ({
   const navigate = useNavigate();
 
   return (
-    <div
-      className="watchlist-card-outer"
-      onClick={() => navigate(`/watchlist/${watchlist.id}`)}
-    >
+    <div className="watchlist-card-outer">
       <div className="watchlist-card-inner">
         <div className="watchlist-left">
           <div className="watchlist-card-title">{watchlist.title}</div>

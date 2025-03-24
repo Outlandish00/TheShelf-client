@@ -1,3 +1,121 @@
 .new-watchlist-form-container{
-    padding-top: 70px;
+    height: 100%;
+    width: 100%;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #1c1c1e;
+    flex-direction: column;
 }
+
+.new-watchlist-form{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 40%;
+}
+
+.new-watchlist-title{
+    font-size: 5rem;
+    font-family: "DM Serif Display", serif;
+    color: white;
+}
+.title-message{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a594f9;
+}
+.watchlist-title-container{
+    display: flex;
+    flex-direction: column;
+
+}
+.watchlist-title-input{
+    height: 3rem;
+    width: 50rem;
+    font-size: 3rem;
+    background-color: #2c2c34 ;
+    color: white;
+    font-family: "Rubik", sans-serif;
+}
+.privacy-selection{
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-message{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a594f9;
+    padding-bottom: 10px;
+}
+.radio-group-root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label{
+    font-family: "DM Serif Display", serif;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.radio-group-item{
+    all:unset;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #a594f9;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.radio-group-item:hover {
+    box-shadow:0 0 3px 3px #a594f9; /* Change border color on hover */
+  }
+
+  .radio-group-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: #333; /* The "checked" icon color */
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  .radio-group-item-selected {
+    background-color: #a594f9; /* Example style for selected */
+  }
+  .radio-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+  .icon-and-word-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 6rem;
+  }
+
+  .watchlist-button{
+    all:unset;
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: "Rubik", sans-serif;
+    color: white;
+
+  }
+
+  .watchlist-button:hover{
+    color:#a594f9;
+  }
+  .watchlist-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

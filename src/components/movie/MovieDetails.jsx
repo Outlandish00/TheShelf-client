@@ -6,12 +6,13 @@ import {
 import { useParams } from "react-router-dom";
 import ImdbLogo from "../../assets/IMDB-Logo.svg";
 import "./MovieDetails.css";
-import { Dialog } from "radix-ui";
+import { Dialog, Separator, Tabs } from "radix-ui";
 import {
   deleteWatchlistMedia,
   newWatchlistMedia,
 } from "../../managers/wathchlistMediaManager";
 import { getWatchlistsByUserId } from "../../managers/watchlistManager";
+import MetaLogo from "../../assets/Metacritic-logo.png";
 
 export const MovieDetails = ({
   usersWatchlist,
@@ -39,13 +40,6 @@ export const MovieDetails = ({
     });
   };
 
-  const handleCloseDialog = () => {
-    setIsAlreadyInWatchlist(false);
-  };
-
-  const handleShowPlotClick = () => {
-    setShowPlot(!showPlot);
-  };
   const handleWatchlistSelection = (e) => {
     const selectedId = parseInt(e.target.value);
     const isInWatchlist = usersWatchlist.some(
@@ -81,88 +75,120 @@ export const MovieDetails = ({
     }
   }, [movie]);
   return (
-    <div className="movie-detials-outer-container">
-      <div className="movie-details-container">
-        <div className="img-and-info">
-          <div className="img-and-ratings">
-            <img className="movie-poster" src={omdbMovie?.Poster} />
-            <div className="imdb-rating">
-              <h3>{omdbMovie.imdbRating}</h3>{" "}
-              <img src={ImdbLogo} className="imdb-logo" />
-            </div>
+    <div className="movie-details-container">
+      <div className="left-side-of-movie-details">
+        <img className="movie-image" src={omdbMovie.Poster} />
+        <div className="ratings">
+          <div className="detail-imdb-rating">
+            {omdbMovie.imdbRating} <img className="imdbLogo" src={ImdbLogo} />
           </div>
-
-          <div className="right-of-photo">
-            <div className="title">
-              <div className="movie-title">
-                <h1>{omdbMovie.Title}</h1>
-              </div>
-            </div>
-            <div className="movies-actors">
-              <div className="actors-subtitle">
-                <h3>Actors</h3>{" "}
-              </div>
-              <div className="actors">{omdbMovie.Actors}</div>
-            </div>
-            <div className="movies-writers">
-              <div className="writer-subtitle">
-                <h3>Writers</h3>
-              </div>
-              <div className="writers">{omdbMovie.Writer}</div>
-            </div>
-            <div className="movie-plot">
-              {showPlot ? (
-                <div className="plot-container">{omdbMovie.Plot}</div>
-              ) : (
-                <button onClick={() => handleShowPlotClick()}>Show Plot</button>
-              )}
-            </div>
+          <div className="meta-critic-rating">
+            {omdbMovie.Metascore} <img className="meta-logo" src={MetaLogo} />
           </div>
         </div>
-        <div className="bottom-of-details">
-          <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <button>Add To Watchlist</button>
-            </Dialog.Trigger>
-            <Dialog.Portal>
-              <Dialog.Overlay className="add-to-watchlist-overlay" />
-              <Dialog.Content className="add-to-watchlist-content">
-                <Dialog.Title className="add-to-watchlist-title">
-                  Add {omdbMovie.Title} to a Watchlist
-                </Dialog.Title>
-                <Dialog.Description className="add-to-watchlist-description">
-                  Choose a watchlist
-                </Dialog.Description>
-                <select onChange={(event) => handleWatchlistSelection(event)}>
-                  <option value="0">Choose A Watchlist</option>
-                  {usersWatchlist?.map((wl) => (
-                    <option value={wl.id} key={wl.id}>
-                      {wl.title}
-                    </option>
-                  ))}
-                </select>
-                <div className="add-to-watchlist-buttons">
-                  {isAlreadyInWatchlist ? (
-                    <Dialog.Close asChild>
-                      <button onClick={() => handleRemovingFromWatchlist()}>
-                        Remove
-                      </button>
-                    </Dialog.Close>
-                  ) : (
-                    <Dialog.Close asChild>
-                      <button onClick={() => handleAddToWatchlist()}>
-                        Add
-                      </button>
-                    </Dialog.Close>
-                  )}
-
-                  <Dialog.Close asChild>
-                    <button onClick={() => handleCloseDialog()}>Close</button>
-                  </Dialog.Close>
+      </div>
+      <div className="right-side-of-movie-details">
+        <div className="movie-header">
+          <div className="movie-title">{omdbMovie.Title}</div>
+          <div className="right-side-of-header">
+            <span className="movie-year">{omdbMovie.Year}</span>
+            <span className="by">by</span>
+            <span className="movie-director">{omdbMovie.Director}</span>
+          </div>
+        </div>
+        <div className="movie-details">
+          <Tabs.Root>
+            <Tabs.List className="tab-list">
+              <Tabs.Trigger className="tab-trigger" value="tab1">
+                Cast & Crew
+              </Tabs.Trigger>
+              <Tabs.Trigger className="tab-trigger" value="tab2">
+                Production
+              </Tabs.Trigger>
+              <Tabs.Trigger className="tab-trigger" value="tab3">
+                Plot
+              </Tabs.Trigger>
+              <Tabs.Trigger className="tab-trigger" value="tab4">
+                Watchlist
+              </Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content className="TabsContent" value="tab1">
+              <div className="cast-and-crew">
+                <div className="director">
+                  <span className="label">Director</span>
+                  <span className="value">{omdbMovie.Director}</span>
                 </div>
-              </Dialog.Content>
-            </Dialog.Portal>
-          </Dialog.Root>
+                <div className="writer">
+                  <span className="label">Writer</span>
+                  <span className="value">{omdbMovie.Writer}</span>
+                </div>
+                <div className="actors">
+                  <span className="label">Actors</span>
+                  <span className="value">{omdbMovie.Actors}</span>
+                </div>
+              </div>
+            </Tabs.Content>
+            <Tabs.Content className="TabsContent" value="tab2">
+              <div className="production-info">
+                <div className="release">
+                  <span className="label">Released on</span>
+                  <span className="value">{omdbMovie.Released}</span>
+                </div>
+                <div className="boxoffice">
+                  <span className="label">Box Office</span>
+                  <span className="value">{omdbMovie.BoxOffice}</span>
+                </div>
+                <div className="genre">
+                  <span className="label">Genres</span>
+                  <span className="value">{omdbMovie.Genre}</span>
+                </div>
+              </div>
+            </Tabs.Content>
+            <Tabs.Content className="TabsContent" value="tab3">
+              <div className="plot">{omdbMovie.Plot}</div>
+            </Tabs.Content>
+            <Tabs.Content className="TabsContent" value="tab4">
+              <div className="watchlist-container">
+                <div className="watchlist-header">Add this to watchlist?</div>
+                <div className="watchlist-selection">
+                  <select
+                    className="watchlist-select"
+                    onChange={(event) => {
+                      handleWatchlistSelection(event);
+                    }}
+                  >
+                    <option value="0">Watchlist</option>
+                    {usersWatchlist.map((wl) => (
+                      <option key={wl.id} value={wl.id}>
+                        {wl.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="watchlist-button">
+                  {isAlreadyInWatchlist ? (
+                    <button
+                      className="button"
+                      onClick={() => {
+                        handleRemovingFromWatchlist();
+                      }}
+                    >
+                      Remove
+                    </button>
+                  ) : (
+                    <button
+                      className="button"
+                      onClick={() => {
+                        handleAddToWatchlist();
+                      }}
+                    >
+                      Add
+                    </button>
+                  )}
+                </div>
+              </div>
+            </Tabs.Content>
+          </Tabs.Root>
         </div>
       </div>
     </div>

@@ -2,17 +2,17 @@
     height: auto;
     width: 15vw;
     display: flex;
+    
 }
 
 .moviecard-container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 100vh;
-    width: 100vw;
+    height: auto;
+    width: 100%;
     padding-top: 70px;
     background-color: #1c1c1e ;
-    overflow: hidden;
     box-sizing: border-box;
     gap: 60px;
 }
@@ -38,6 +38,7 @@
     z-index: 1; 
     opacity: 0; 
     transition: opacity 0.3s ease; 
+    box-sizing: border-box;
   }
 
   .all-movies-container:hover::before{
@@ -63,6 +64,8 @@
     z-index: 2;
     font-size: 20px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
 }
 
