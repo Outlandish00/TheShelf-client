@@ -206,10 +206,14 @@
     overflow: hidden;
     background-color: #2c2c34;
   }
-  .movie-image{
-    height: 25rem;
-    width: 240px;
+  #movie-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 
+  }
+  .movie-card img{
+    object-fit: cover;
   }
 
   .movie-fallback {

@@ -113,10 +113,7 @@ export const NewMovie = ({ loggedInUser }) => {
                     >
                       <img src={selectedMovie.Poster} />
                       <Avatar.Root className="avatarRoot">
-                        <Avatar.Image
-                          className="movie-image"
-                          src={movie.Poster}
-                        />
+                        <Avatar.Image id="movie-image" src={movie.Poster} />
                         <Avatar.Fallback className="movie-fallback">
                           {movie.Title}
                         </Avatar.Fallback>

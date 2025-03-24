@@ -5,6 +5,7 @@ import {
   updateAWatchlist,
 } from "../../managers/watchlistManager";
 import { Form, RadioGroup } from "radix-ui";
+import "./EditWatchlistForm.css";
 
 export const EditWatchlistForm = () => {
   const { id } = useParams();
@@ -33,51 +34,66 @@ export const EditWatchlistForm = () => {
   };
   return (
     <div className="edit-watchlist-form-container">
+      <div className="edit-watchlist-title">Edit a Watchlist!</div>
       <Form.Root className="edit-watchlist-form">
-        <Form.Field className="watchlist-title" name="title">
-          <Form.Label className="watchlist-title-label">Title:</Form.Label>
-          <Form.Control asChild>
-            <input
-              type="text"
-              required
-              onChange={(event) => setEditedTitle(event.target.value)}
-              value={editedTitle}
-            />
-          </Form.Control>
-        </Form.Field>
-        <Form.Field className="watchlist-private-radio">
-          <Form.Label className="watchlist-private-label">
-            Is Private?{" "}
-          </Form.Label>
-          <Form.Control asChild>
+        <div className="edit-title-container">
+          <div className="title-message">
+            Change the title of your watchlist.
+          </div>
+          <input
+            className="watchlist-title-input"
+            type="text"
+            required
+            onChange={(event) => setEditedTitle(event.target.value)}
+            value={editedTitle}
+          />
+        </div>
+
+        <Form.Field>
+          <div className="privacy-selection">
+            <div className="privacy-message">
+              Do you want this watchlist to be viewed by others?
+            </div>
             <RadioGroup.Root className="radio-group-root">
-              <RadioGroup.Item
-                className="edit-radio-group-item"
-                onClick={() => setEditedPrivate(true)}
-              >
-                <RadioGroup.Indicator className="edit-radio-group-indicator" />
-              </RadioGroup.Item>
-              <label className="label">Yes</label>
-              <RadioGroup.Item
-                className="edit-radio-group-indicator"
-                onClick={() => setEditedPrivate(false)}
-              >
-                <RadioGroup.Indicator className="edit-radio-group-indicator" />
-              </RadioGroup.Item>
-              <label>No</label>
+              <div className="radio-group">
+                <div className="icon-and-word-group">
+                  <RadioGroup.Item
+                    className={`radio-group-item ${
+                      editedPrivate ? "" : "radio-group-item-selected"
+                    }`}
+                    onClick={() => setEditedPrivate(false)}
+                  >
+                    <RadioGroup.Indicator className="radio-group-indicator" />
+                  </RadioGroup.Item>
+                  <label className="label">Yes</label>
+                </div>
+                <div className="icon-and-word-group">
+                  <RadioGroup.Item
+                    className={`radio-group-item ${
+                      editedPrivate ? "radio-group-item-selected" : ""
+                    }`}
+                    onClick={() => setEditedPrivate(true)}
+                  >
+                    <RadioGroup.Indicator className="radio-group-indicator" />
+                  </RadioGroup.Item>
+                  <label className="label">No</label>
+                </div>
+              </div>
             </RadioGroup.Root>
-          </Form.Control>
+          </div>
         </Form.Field>
         <Form.Submit asChild>
-          <button
-            className="edit-watchlist-button"
-            onClick={(e) => {
-              e.preventDefault();
-              handleSave();
-            }}
-          >
-            Save Watchlist
-          </button>
+          <div className="watchlist-button-container">
+            <button
+              className="edit-watchlist-button"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSave();
+              }}
+            >
+              Save Watchlist
+            </button>
+          </div>
         </Form.Submit>
       </Form.Root>
     </div>
