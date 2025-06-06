@@ -9,6 +9,7 @@ import { Progress } from "radix-ui";
 function App() {
   const [progress, setProgress] = useState(50);
   const [loggedInUser, setLoggedInUser] = useState();
+  const [searchedLetters, setSearchedLetters] = useState("");
 
   useEffect(() => {
     // user will be null if not authenticated
@@ -25,9 +26,14 @@ function App() {
   return (
     <>
       {loggedInUser && (
-        <Navbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+        <Navbar
+          setSearchedLetters={setSearchedLetters}
+          loggedInUser={loggedInUser}
+          setLoggedInUser={setLoggedInUser}
+        />
       )}
       <ApplicationViews
+        searchedLetters={searchedLetters}
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
       />

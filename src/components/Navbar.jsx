@@ -3,13 +3,21 @@ import "./Navbar.css";
 import { useEffect, useState } from "react";
 import { logout } from "../managers/authManager";
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
+export const Navbar = ({
+  loggedInUser,
+  setLoggedInUser,
+  setSearchedLetters,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const [typedLetters, setTypedLetters] = useState("");
   useEffect(() => {
     // Function to handle mouse movement
     const handleMouseMove = (e) => {
@@ -93,6 +101,34 @@ export const Navbar = ({ loggedInUser, setLoggedInUser }) => {
                   <option value="/watchlist">My Watchlists</option>
                   <option value="/watchlist/new">New Watchlists</option>
                 </select>
+              </div>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className="NavigationMenuLink">
+              <div className="searchbar">
+                {location.pathname == "/movie/all" ? (
+                  <div className="search-bar-container">
+                    <FontAwesomeIcon
+                      onClick={() => {
+                        setSearchedLetters(typedLetters);
+                      }}
+                      icon={faMagnifyingGlass}
+                    />
+                    <input
+                      type="text"
+                      className="search-bar-input"
+                      onChange={(event) => {
+                        setTypedLetters(event.target.value);
+                      }}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          setSearchedLetters(typedLetters);
+                        }
+                      }}
+                    />
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </NavigationMenu.Item>
           </div>

@@ -14,8 +14,13 @@ import { getWatchlistsByUserId } from "../managers/watchlistManager";
 import { AllWatchlistPage } from "./watchlist/AllWatchlistPage";
 import { MovieDetails } from "./movie/MovieDetails";
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+export default function ApplicationViews({
+  loggedInUser,
+  setLoggedInUser,
+  searchedLetters,
+}) {
   const [usersWatchlist, setUsersWatchlist] = useState([]);
+
   useEffect(() => {
     if (loggedInUser) {
       getWatchlistsByUserId(loggedInUser.id).then((res) =>
@@ -40,6 +45,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
                 <AllMovies
+                  searchedLetters={searchedLetters}
                   loggedInUser={loggedInUser}
                   usersWatchlist={usersWatchlist}
                   setUsersWatchlist={setUsersWatchlist}
