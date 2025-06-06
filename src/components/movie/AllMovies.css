@@ -15,6 +15,7 @@
     background-color: #1c1c1e ;
     box-sizing: border-box;
     gap: 60px;
+    min-height: 100%;
 }
 .all-movies-container{
     display: flex;
@@ -47,6 +48,7 @@
 .all-movies-container:hover{
     width: 272px;
     height: 372px;
+    box-sizing: border-box;
 }
 
 .hover-text{
