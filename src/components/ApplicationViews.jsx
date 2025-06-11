@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { getWatchlistsByUserId } from "../managers/watchlistManager";
 import { AllWatchlistPage } from "./watchlist/AllWatchlistPage";
 import { MovieDetails } from "./movie/MovieDetails";
+import { Profile } from "./profile/profile";
 
 export default function ApplicationViews({
   loggedInUser,
@@ -36,6 +37,14 @@ export default function ApplicationViews({
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <Homepage />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Profile loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />

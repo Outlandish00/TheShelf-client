@@ -136,6 +136,18 @@ export const Navbar = ({
             <NavigationMenu.Item className="NavigationMenuItem">
               <NavigationMenu.Link className="NavigationMenuLink">
                 <button
+                  className="profile-button"
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                >
+                  Profile
+                </button>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className="NavigationMenuItem">
+              <NavigationMenu.Link className="NavigationMenuLink">
+                <button
                   className="log-out-button"
                   onClick={(e) => {
                     e.preventDefault();

@@ -52,10 +52,10 @@
     min-width: 145px;
 }
 
-.NavigationMenuLink:hover, .log-out-button:hover, .NavigationMenuTrigger:hover{
+.NavigationMenuLink:hover, .log-out-button:hover, .profile-button:hover, .NavigationMenuTrigger:hover{
     color: #7371fc;
 }
-.log-out-button{
+.log-out-button, .profile-button{
     width: 10vw;
     height: 40px;
     background-color: transparent;
@@ -148,4 +148,11 @@
 
   .navbar-left{
     margin-right: 200px;
+  }
+
+  .navbar-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
   }
