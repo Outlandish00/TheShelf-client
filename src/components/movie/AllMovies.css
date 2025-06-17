@@ -45,11 +45,7 @@
   .all-movies-container:hover::before{
     opacity: 1;
   }
-.all-movies-container:hover{
-    width: 272px;
-    height: 372px;
-    box-sizing: border-box;
-}
+  .all-movies-container:hover{cursor: pointer;}
 
 .hover-text{
     position: absolute;
@@ -75,7 +71,7 @@
     opacity: 1;
     left:0;
     visibility: visible;
-    transition: left 0.3s ease, opacity 0.1s;
+    transition: left 0.35s ease-in, opacity 0.1s;
 }
 .imdb-logo-allmovies{
 height: 20px;
@@ -93,7 +89,7 @@ height: 20px;
     opacity: 1;
     right:0;
     visibility: visible;
-    transition: right 0.3s ease, opacity 0.1s;
+    transition: right 0.35s ease-in, opacity 0.1s;
 }
 
 .bottom-hover-text{
