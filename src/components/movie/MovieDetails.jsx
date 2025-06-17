@@ -13,6 +13,7 @@ import {
 } from "../../managers/wathchlistMediaManager";
 import { getWatchlistsByUserId } from "../../managers/watchlistManager";
 import MetaLogo from "../../assets/Metacritic-logo.png";
+import { getMovieRatingsByMovieId } from "../../managers/movieRatingManager";
 
 export const MovieDetails = ({
   usersWatchlist,
@@ -26,6 +27,9 @@ export const MovieDetails = ({
   const [selectedWatchlistId, setSelectedWatchlistId] = useState(0);
   const [isAlreadyInWatchlist, setIsAlreadyInWatchlist] = useState(false);
   const [moviesWatchlist, setMoviesWatchlist] = useState([]);
+  const [currentTab, setCurrentTab] = useState("tab1");
+  const [movieRatings, setMovieRatings] = useState([]);
+  const [movieAverageRating, setMovieAverageRating] = useState(0);
 
   const handleAddToWatchlist = () => {
     let newWatchlistMediaObject = {
@@ -60,12 +64,39 @@ export const MovieDetails = ({
       );
     });
   };
+  const getAverageRating = () => {
+    let totalRatings = 0;
+    movieRatings.forEach((mr) => {
+      totalRatings += mr.rating;
+    });
+    console.log(totalRatings);
+    let ratingCount = 0;
+    movieRatings.forEach((mr) => {
+      ratingCount += 1;
+    });
+    console.log(ratingCount);
+
+    let average = totalRatings / ratingCount;
+    console.log(average);
+    setMovieAverageRating(average);
+  };
 
   useEffect(() => {
     console.log("Fetching movie for id:", id);
     setOmdbMovie({});
     getMovieById(id).then((movie) => setMovie(movie));
   }, [id]);
+
+  useEffect(() => {
+    if (movie.id) {
+      getMovieRatingsByMovieId(movie.id).then((res) => setMovieRatings(res));
+    }
+  }, [movie]);
+  useEffect(() => {
+    if (movieRatings) {
+      getAverageRating();
+    }
+  }, [movieRatings]);
 
   useEffect(() => {
     if (movie.imbdId) {
@@ -97,7 +128,10 @@ export const MovieDetails = ({
           </div>
         </div>
         <div className="movie-details">
-          <Tabs.Root>
+          <Tabs.Root
+            value={currentTab}
+            onValueChange={(value) => setCurrentTab(value)}
+          >
             <Tabs.List className="tab-list">
               <Tabs.Trigger className="tab-trigger" value="tab1">
                 Cast & Crew
